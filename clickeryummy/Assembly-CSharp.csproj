@@ -48,8 +48,8 @@
     <Analyzer Include="/Applications/Unity/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets/fudgeControl.cs" />
     <Compile Include="Assets/LogicManager.cs" />
+    <Compile Include="Assets/tirimasuControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets/TextMesh Pro/Shaders/TMPro.cginc" />
