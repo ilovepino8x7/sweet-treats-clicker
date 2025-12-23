@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.ComponentModel;
 using System;
+using UnityEngine.UI;
 public class LogicManager : MonoBehaviour
 {
     [HideInInspector]
@@ -12,11 +13,15 @@ public class LogicManager : MonoBehaviour
     public int clickPower;          //0, 1, 2, 3, 4, 5;
     //private int[] spoonStrength = { 1, 10, 250, 1000, 10000, 100000};
     // wooden, bronze, silver, gold, diamond, platinum;
-    private int[] prices = { 250, 10000, 1000000, 10000000, 1000000000};
+    private int[] prices = { 250, 5000};
     [HideInInspector]
     public int money;
     public TMP_Text moneyCount;
-    private int currentLevel;
+    public Sprite woodSpoon;
+    public Sprite silverSpoon;
+    public Sprite goldSpoon;
+    public Button shovelIcon;
+    public TMP_Text upgradePrice;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,6 +35,22 @@ public class LogicManager : MonoBehaviour
         moneyCount.text = money.ToString() + "x";
         Cursor.visible = false;
         mouse.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
+        if (clickPower == 0)
+        {
+            shovelIcon.image.sprite = woodSpoon;
+            mouse.GetComponent<SpriteRenderer>().sprite = woodSpoon;
+        }
+        else if (clickPower == 1)
+        {
+            shovelIcon.image.sprite = silverSpoon;
+            mouse.GetComponent<SpriteRenderer>().sprite = silverSpoon;
+        }
+        else if (clickPower == 2)
+        {
+            shovelIcon.image.sprite = goldSpoon;
+            mouse.GetComponent<SpriteRenderer>().sprite = goldSpoon;
+        }
+        upgradePrice.text = prices[clickPower].ToString() + "x";
     }
     public void Upgrade()
     {
