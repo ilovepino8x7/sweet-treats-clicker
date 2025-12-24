@@ -13,7 +13,7 @@ public class LogicManager : MonoBehaviour
     public int clickPower;          //0, 1, 2, 3, 4, 5;
     //private int[] spoonStrength = { 1, 10, 250, 1000, 10000, 100000};
     // wooden, bronze, silver, gold, diamond, platinum;
-    private int[] prices = { 250, 5000};
+    private int[] prices = { 250, 5000 };
     [HideInInspector]
     public int money;
     public TMP_Text moneyCount;
@@ -22,6 +22,12 @@ public class LogicManager : MonoBehaviour
     public Sprite goldSpoon;
     public Button shovelIcon;
     public TMP_Text upgradePrice;
+    [HideInInspector]
+    public int cps;
+    public TMP_Text cpsText;
+    private int ForkCost = 100;
+    public GameObject fork;
+    public TMP_Text forkPrice;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,8 +39,10 @@ public class LogicManager : MonoBehaviour
     {
         clickText.text = clicks.ToString() + " Clicks";
         moneyCount.text = money.ToString() + "x";
+        cpsText.text = cps.ToString() + " CPS";
+        forkPrice.text = ForkCost.ToString();
         Cursor.visible = false;
-        mouse.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
+        mouse.transform.position = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0);
         if (clickPower == 0)
         {
             shovelIcon.image.sprite = woodSpoon;
@@ -50,7 +58,11 @@ public class LogicManager : MonoBehaviour
             shovelIcon.image.sprite = goldSpoon;
             mouse.GetComponent<SpriteRenderer>().sprite = goldSpoon;
         }
-        upgradePrice.text = prices[clickPower].ToString() + "x";
+        if (clickPower <= 1)
+        {
+            upgradePrice.text = prices[clickPower].ToString() + "x";
+        }
+        
     }
     public void Upgrade()
     {
@@ -62,6 +74,15 @@ public class LogicManager : MonoBehaviour
         {
             money -= prices[clickPower];
             clickPower++;
+        }
+    }
+    public void BuyFork()
+    {
+        if (money >= ForkCost)
+        {
+            money -= ForkCost;
+            ForkCost = (int)(ForkCost * 1.5);
+            Instantiate(fork, new Vector2(-4.091725f, 1.623737f), Quaternion.Euler(0, 0, 90));
         }
     }
 }

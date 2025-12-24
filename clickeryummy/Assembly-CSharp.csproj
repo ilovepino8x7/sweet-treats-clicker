@@ -51,6 +51,7 @@
     <Compile Include="Assets/destroyControl.cs" />
     <Compile Include="Assets/openDesc.cs" />
     <Compile Include="Assets/LogicManager.cs" />
+    <Compile Include="Assets/forkMove.cs" />
     <Compile Include="Assets/tirimasuControl.cs" />
   </ItemGroup>
   <ItemGroup>

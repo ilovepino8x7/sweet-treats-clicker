@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class destroyControl : MonoBehaviour
 {
-    public string gutenTag = "Finish";
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

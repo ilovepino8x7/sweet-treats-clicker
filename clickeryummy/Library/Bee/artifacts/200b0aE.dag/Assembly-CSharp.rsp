@@ -439,6 +439,7 @@
 -analyzer:"/Applications/Unity/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 -analyzer:"/Applications/Unity/Unity.app/Contents/Tools/Unity.SourceGenerators/Unity.UIToolkit.SourceGenerator.dll"
 "Assets/destroyControl.cs"
+"Assets/forkMove.cs"
 "Assets/LogicManager.cs"
 "Assets/openDesc.cs"
 "Assets/tirimasuControl.cs"
